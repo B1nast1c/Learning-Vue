@@ -24,6 +24,14 @@
 
         <button v-on:click="addItem()">Add</button>
 
+        <select v-model="id_user">
+            <option v-for="(item) in genero" :value="item.id">{{item.name}}</option>
+        </select>
+        <div>
+            {{name}} - {{id_user}} - CONTADOR DE CAMBIOS: {{contador}}
+        </div>
+
+
         <table>
             <tr>
                 <th>Nombres</th>
@@ -47,12 +55,23 @@
 //v-html = Itera sobre un array de mismos elementos USADO EN TABLAS
     var app = new Vue({el: "#app", //El supongo es el origen uwu
         data: {
+            contador: 0,
+            id_user: null,
             showButton: true,
             name: "",
             list: [
             {name: "Mirella"},
             {name: "Selena"}
+            ],
+            genero: [
+                {id: 1, name: "Hombre"},
+                {id: 2, name: "Mujer"}
             ]
+        },
+        watch: { //Chequea cambios en la variable como tal
+            id_user: function(){
+                this.contador++
+            }
         },
         methods: { //v-on Permite llamar funciones que apuntan a objetos de VUE, es decir sus métodos
             hide() {
