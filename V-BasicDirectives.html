@@ -12,8 +12,8 @@
             Hola Mundillo
         </div>
         <div>
-            <button type="button" id="showButton" v-on:click="show()">Show</button>
-            <button type="button" id="hideButton" v-on:click="hide()">Hide</button>
+            <button type="button" id="showButton" v-on:click="show()" v-if="!showButton">Show</button>
+            <button type="button" id="hideButton" v-on:click="hide()" v-if="showButton">Hide</button>
         </div>
     </div>
 </body>
@@ -31,6 +31,7 @@
                 this.showButton = true;
             }    
         }
+        //NOTAS: v-if y v-on pueden ser llamados en la misma etiqueta
     });
 </script>
 </html>
