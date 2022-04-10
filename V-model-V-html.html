@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="showButton">
+            Hola Mundillo
+        </div>
+        <div>
+            <button type="button" id="showButton" v-on:click="show()" v-if="!showButton">Show</button>
+            <button type="button" id="hideButton" v-on:click="hide()" v-if="showButton">Hide</button>
+            <input type="text" id="inputText" v-model="name"/>
+        </div>
+        <div>
+            {{name}}
+        </div>
+        <br>
+        <div v-html="name"></div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+//v-model = Permite mandar y modificar valores de un HTML (Usado en inputs y selections)
+//v.html = Sobreescribe elementos html (usado en divs, o otros elementos que se sobre escriben)
+    var app = new Vue({el: "#app", //El supongo es el origen uwu
+        data: {
+            showButton: true,
+            name: ""
+        },
+        methods: { //v-on Permite llamar funciones que apuntan a objetos de VUE, es decir sus métodos
+            hide() {
+                this.showButton = false; //Nos referimos a la propiedad, pero como cambiarla: BLOQUE V-if que renderiza solamente si es true
+            },
+            show() {
+                this.showButton = true;
+            }    
+        }
+        //NOTAS: v-if y v-on pueden ser llamados en la misma etiqueta
+    });
+</script>
+</html>
