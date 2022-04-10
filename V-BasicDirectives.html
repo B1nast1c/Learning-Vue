@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="showButton">
+            Hola Mundillo
+        </div>
+        <div>
+            <button type="button" id="showButton" v-on:click="show()">Show</button>
+            <button type="button" id="hideButton" v-on:click="hide()">Hide</button>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var app = new Vue({el: "#app", //El supongo es el origen uwu
+        data: {
+            showButton: true
+        },
+        methods: { //v-on Permite llamar funciones que apuntan a objetos de VUE, es decir sus métodos
+            hide() {
+                this.showButton = false; //Nos referimos a la propiedad, pero como cambiarla: BLOQUE V-if que renderiza solamente si es true
+            },
+            show() {
+                this.showButton = true;
+            }    
+        }
+    });
+</script>
+</html>
